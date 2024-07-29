@@ -6,6 +6,9 @@ db = SQLAlchemy()
 
 
 class Book(db.Model):
+    """
+    The Book model for database
+    """
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, nullable=True)
     added = db.Column(db.DateTime, nullable=False, default=func.now())
@@ -14,10 +17,13 @@ class Book(db.Model):
     genre = relationship("Genre", back_populates="books")
 
     def __repr__(self):
-        return f"User(fullname={self.name!r})"
+        return f"Book(name={self.name!r})"
 
 
 class Genre(db.Model):
+    """
+    The Genre model for database
+    """
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
 
